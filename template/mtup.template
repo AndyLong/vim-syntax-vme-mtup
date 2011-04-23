@@ -1,0 +1,54 @@
+Viml:   let s:value_start = '<!'
+Viml:   let s:value_end = '!>'
+Viml:   let s:fileencoding = 'utf-8'
+Viml:   let s:marker_open = '<+'
+Viml:   let s:marker_close = '+>'
+Viml: "
+*CREATE( <!toupper(expand("%:t:r"))!> )
+*@
+*@  Author: <!Author()!>
+*@  Date Created: <!strftime('%c')!>
+*@  Last Updated: $Date$
+*@  Version: $Revision$
+*@  $Log: mtup.template,v $
+*@
+*PARAMS( EXP & HLL )
+*SPACEFILL( YES )
+*LINESPLIT( SPACE )
+*ADD( 2 )
+< JUST 32 L P2 >/0002: UNABLE TO LOCATE MESSAGE TEXT NUMBER < P1 >
+*@
+*@  Standard parameter assignmments as follows:-
+*@      P1  = Original Text Number
+*@      P2  = Calling Procedure Name
+*@      P3  = Procedure Version NUmber
+*@      P4  = Procedure Compilation Details
+*@      P5  = First user-supplied parameter
+*@
+*ADD( 101 )
+< JUST 32 L P2 >< JUST 4 R P1>: <>
+*ADD( 102 )
+< P5 >
+*ADD( 103 )
+< HEX P5 >
+*ADD( 104 )
+<   CASE P5
+        EQUALS      <0>     THEN    <False>
+        DEFAULT                     <True>
+    ESAC
+>
+*ADD( 105 )
+< P5 > = < P6 >
+*ADD( 106 )
+< P5 > = < HEX P6 >
+*ADD( 107 )
+< P5 > = <   CASE P6
+        EQUALS      <0>     THEN    <False>
+        DEFAULT                     <True>
+    ESAC
+>
+*ADD( 201 )
+< P3 >-< P4 > BEGINS
+*ADD( 299 )
+< P3 >-< P4 > ENDS, RESULT = < P5 >
+*END

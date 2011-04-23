@@ -1,0 +1,28 @@
+This collection of files creates a syntax recognition system for the Message
+Text Update Program, running on the ICL/Fujitsu VME operating system. 
+
+The files in the 'template' folder are designed to be used with Luc Hermitte's
+version of Gergely Kontra's mu-template system.
+
+*** NOTE: These files are sill under development ***
+
+The system is a bit simple-minded at the present - it makes a number of
+simplifying assumptions:-
+
+1. The command character is always '*' 2. Escape characters are angle brackets
+('<' & '>')
+
+'foldmethod' is set to syntax, and you can select folding to be carried out on
+either (or both) of nested text strings (stuff between angle brackets) or on
+conditional statements (CASE.. ESAC), although, by experience, I can't
+recommend it for any file that is larger than a few dozen small texts. This is
+probably due to the 'syntax sync fromstart' clause in the file, which is ther
+because I don't grasp the difference between 'syntax sync' groups and
+'ordinary' syntax groups in the 'syntax sync match' clauses :-(
+
+If you want to experiment with it, then a pair of buffer-local variables drive
+the two clauses that can be folded :-
+
+b:mtup_fold_messages & b:mtup_fold_conditionals
+
+which will inherit value from global variables of the same name, if set.
