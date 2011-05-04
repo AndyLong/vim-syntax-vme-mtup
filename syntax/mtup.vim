@@ -1,7 +1,7 @@
 "	MTUP Syntax File
 "	Language:	ICL/Fujitsu VME Message Text Update programs
 "	Maintainer:	Andy Long (Andrew.Long@Yahoo.com)
-"	LastChange:	$Date: 2011-03-15 14:20:30 $
+"	LastChange:	$Date$
 "	Remarks:	VME MTUP is the Message Text Generation Language for the
 "			(formerly) ICL (now) Fujitsu mainframe VME systems.
 "
@@ -252,7 +252,7 @@ if b:mtup_fold_conditionals
 		\	matchgroup=mtupEsac end=/\<ESAC\>/
 else
 	syntax	region	mtupCaseClause keepend extend contained 
-		\	contains=@mtupCaseItems,mtupOr,mtupComma,mtupStartClause,
+		\	contains=mtupCaseItem,mtupOr,mtupComma,mtupStartsClause,
 		\		mtupEqualsClause,mtupDefaultClause,
 		\		mtupThenClause,mtupCommentInEscape,mtupError
 		\	matchgroup=mtupCase start=/\<CASE\>/ 
@@ -358,7 +358,7 @@ syntax	match	mtupEndCommand contained contains=mtupControlChar,mtupEnd,
 	\	/^..\{-}\<END\>.*$/
 
 syntax	cluster	mtupCaseItems contains=mtupParameterInsertion,mtupTextInsertion,
-	\		mtupNestedMessage,,mtupFormatEffectors
+	\		mtupNestedMessage,mtupFormatEffectors
 
 syntax	cluster	mtupParameterValues contains=mtupParameterInsertion,
 	\		mtupTextInsertion,mtupTabInsertion,mtupHexInsertion,
